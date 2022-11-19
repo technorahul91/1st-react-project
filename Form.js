@@ -5,7 +5,7 @@ export class Form extends Component {
         super(props)
 
         this.state = {
-            name: "",
+            fname: "",
             email: '',
             password: "",
             mobile: "",
@@ -15,55 +15,64 @@ export class Form extends Component {
         }
     }
 
-    handleName = (event) => {
-        this.setState({ name: event.target.value })
+    /* handleName = (event) => {
+         this.setState({ name: event.target.value })
+ 
+     }
+ 
+     handleEmail = (event) => {
+         this.setState({ email: event.target.value })
+     }
+ 
+     handlePassword = (event) => {
+         this.setState({ password: event.target.value })
+     }
+     handleMobile = (event) => {
+         this.setState({ mobile: event.target.value })
+     }
+ 
+     handleAddress = (event) => {
+         this.setState({ address: event.target.value })
+     }
+ */
 
+    handleChange = (event) => {
+        this.setState({ [event.target.name]: event.target.value })
     }
 
-    handleEmail = (event) => {
-        this.setState({ email: event.target.value })
+
+    handleSubmit = (event) => {
+        alert(`${this.state.fname} your form is submitted`)
+        event.preventDefault();
     }
 
-    handlePassword = (event) => {
-        this.setState({ password: event.target.value })
-    }
-    handleMobile = (event) => {
-        this.setState({ mobile: event.target.value })
-    }
 
-    handleAddress = (event) => {
-        this.setState({ address: event.target.value })
-    }
-
-    handleSubmit=(event)=>{
-        alert(`${this.state.name} your form is submitted`)
-    }
 
     render() {
         return (
             <div className='container' style={{ background: "cyan", width: "30%", padding: "3%", borderRadius: "20px" }}>
                 <form onSubmit={this.handleSubmit}>
                     <label>Name : </label><br />
-                    <input type="text" value={this.state.name} onChange={this.handleName} />
+                    <input type="text" name="fname" value={this.state.fname} onChange={this.handleChange} />
                     <br />
 
                     <label>Email : </label><br />
-                    <input type="email" value={this.state.email} onChange={this.handleEmail} />
+                    <input type="email" name="email" value={this.state.email} onChange={this.handleChange} />
                     <br />
 
                     <label>Password : </label><br />
-                    <input type="password" value={this.state.password} onChange={this.handlePassword} />
+                    <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
 
                     <br />
 
 
                     <label>Mobile : </label><br />
-                    <input type="number" value={this.state.mobile} onChange={this.handleMobile} />
+                    <input type="number" name="mobile" value={this.state.mobile} onChange={this.handleChange} />
 
                     <br />
 
                     <label>Address : </label><br />
-                    <textarea value={this.state.address} onChange={this.handleAddress} />
+                    <textarea value={this.state.address} name="address" onChange={this.handleChange} />
 
                     <br />
                     <button style={{ color: "red", background: "yellow" }}>Submit</button>
